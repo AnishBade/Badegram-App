@@ -1,0 +1,25 @@
+For Linux users, you can log in as follows:
+sudo su postgres
+
+Then, enter psql.
+
+Great – let’s create the database:
+CREATE DATABASE coredb;
+
+To connect to the database, we need USER with a password:
+CREATE USER core WITH PASSWORD 'anishcore123';
+
+the next step is to grant access to our database to the new user:
+GRANT ALL PRIVILEGES ON DATABASE coredb TO core;
+
+We also need to make sure this user can create a database. This will be helpful when
+we can run tests. To run tests, Django will configure a full environment but will also use a database:
+ALTER USER core CREATEDB;
+
+\list or \l: list all databases
+\c <db name>: connect to a certain database
+\dt: list all tables in the current database using your search_path
+\dt *.: list all tables in the current database regardless your search_path
+\d  to show all tables in the database
+
+
